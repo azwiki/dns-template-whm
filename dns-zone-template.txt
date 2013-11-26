@@ -1,0 +1,47 @@
+; cPanel %cpversion%
+; Zone file for %domain%
+$TTL %ttl%
+@      %nsttl%	IN      SOA     %nameserver%. %rpemail%. (
+		%serial%	; serial, todays date+todays
+		86400		; refresh, seconds
+		7200		; retry, seconds
+		3600000		; expire, seconds
+		86400 )		; minimum, seconds
+		
+;Nameservers
+%domain%. %nsttl% IN NS %nameserver%.
+%domain%. %nsttl% IN NS %nameserver2%.
+%domain%. %nsttl% IN NS %nameserver3%.
+%domain%. %nsttl% IN NS %nameserver4%.
+
+; Pointing nameservers 
+%nameserverentry%. IN A %nameservera%
+%nameserverentry2%. IN A %nameservera2%
+%nameserverentry3%. IN A %nameservera3%
+%nameserverentry4%. IN A %nameservera4%
+
+; A records
+%domain%. IN A %ip%
+
+localhost.%domain%. IN A 127.0.0.1
+
+
+; CNAME Entries
+
+www IN CNAME %domain%.
+webdisk IN CNAME %domain%.
+ftp IN A %ftpip%
+mail	%ttl%	IN	CNAME	ghs.google.com.
+pop	%ttl%	IN	CNAME	ghs.google.com.
+smtp	%ttl%	IN	CNAME	ghs.google.com.
+calander %ttl%	IN	CNAME	ghs.google.com.
+docs	%ttl%	IN	CNAME	ghs.google.com.
+sites	%ttl%	IN	CNAME	ghs.google.com.
+
+; MX Records
+%domain%.	%ttl%	IN	MX	0	ASPMX.L.GOOGLE.COM.
+%domain%.	%ttl%	IN	MX	10	ALT1.ASPMX.L.GOOGLE.COM.
+%domain%.	%ttl%	IN	MX	20	ALT2.ASPMX.L.GOOGLE.COM.
+%domain%.	%ttl%	IN	MX	30	ASPMX2.GOOGLEMAIL.COM.
+%domain%.	%ttl%	IN	MX	40	ASPMX3.GOOGLEMAIL.COM.
+
